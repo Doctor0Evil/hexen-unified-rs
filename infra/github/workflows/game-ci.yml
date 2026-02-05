@@ -1,0 +1,16 @@
+name: Game XR CI
+
+on:
+  push:
+    paths:
+      - "clients/unity/**"
+      - "clients/android/**"
+
+jobs:
+  validate-ffi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build guard crates
+        run: cargo build -p cybernano-guard -p bioscale-upgrade-store
