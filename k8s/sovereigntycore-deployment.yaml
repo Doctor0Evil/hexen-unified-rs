@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sovereigntycore
+  namespace: neuro-lab
+  labels:
+    app: sovereigntycore
+    bioscale.neuromorph: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sovereigntycore
+  template:
+    metadata:
+      labels:
+        app: sovereigntycore
+        bioscale.neuromorph: "true"
+        neurorights.enforced: "true"
+    spec:
+      containers:
+        - name: sovereigntycore
+          image: ghcr.io/yourorg/sovereigntycore:latest
+          args:
+            - "--manifest=/config/neuro-workspace.manifest.aln"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+      volumes:
+        - name: config
+          configMap:
+            name: neuro-sovereign-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sovereigntycore
+  namespace: neuro-lab
+spec:
+  selector:
+    app: sovereigntycore
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
