@@ -1,0 +1,19 @@
+groups:
+  - name: neurorights-roh
+    rules:
+      - alert: RoHAboveCeiling
+        expr: sovereignty_roh_after > 0.3
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "RoH ceiling violated for {{ $labels.subject_id }}"
+  - name: envelopes-monotone
+    rules:
+      - alert: EnvelopeLoosening
+        expr: sovereignty_envelope_violation_total > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Envelope monotonicity violated for {{ $labels.subject_id }} scope={{ $labels.scope }}"
