@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hexen-backend-core
+  namespace: neuro-lab
+  labels:
+    app: hexen-backend-core
+    bioscale.neuromorph: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hexen-backend-core
+  template:
+    metadata:
+      labels:
+        app: hexen-backend-core
+        bioscale.neuromorph: "true"
+        neurorights.enforced: "true"
+    spec:
+      containers:
+        - name: hexen
+          image: ghcr.io/yourorg/hexen-backend-core:latest
+          env:
+            - name: SOVEREIGNTYCORE_URL
+              value: http://sovereigntycore.neuro-lab.svc.cluster.local:8080
+          volumeMounts:
+            - name: organic-config
+              mountPath: /organic
+          ports:
+            - name: http
+              containerPort: 8090
+      volumes:
+        - name: organic-config
+          configMap:
+            name: organiccpu-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hexen-backend-core
+  namespace: neuro-lab
+spec:
+  selector:
+    app: hexen-backend-core
+  ports:
+    - name: http
+      port: 8090
+      targetPort: 8090
