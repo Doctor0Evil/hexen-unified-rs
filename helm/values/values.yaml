@@ -1,0 +1,13 @@
+hexen-neurostack:
+  image:
+    repository: ghcr.io/doctor0evil/hexen-neurostack
+    tag: "0.1.0"
+
+xbox-addon:
+  image:
+    repository: ghcr.io/doctor0evil/hexen-xbox-client
+    tag: "0.1.0"
+
+vault:
+  server:
+    affinity: {}
