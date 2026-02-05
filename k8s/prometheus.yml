@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "hexen-neurostack"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["hexen-neurostack.default.svc.cluster.local:8080"]
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_pod_label_app]
+        target_label: app
+  - job_name: "hexen-workers"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["hexen-workers.default.svc.cluster.local:9090"]
