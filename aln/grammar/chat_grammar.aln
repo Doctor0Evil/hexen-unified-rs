@@ -1,0 +1,6 @@
+SESSION chat {
+  INTENT neuromorphic_upgrade;
+  SAFETY {
+    require evidence_bundle >= 10;
+  }
+}
