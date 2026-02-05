@@ -1,0 +1,10 @@
+[package]
+name = "bioscale-evolution-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap.workspace = true
+serde_yaml.workspace = true
+serde.workspace = true
+bioscale-upgrade-store.workspace = true
