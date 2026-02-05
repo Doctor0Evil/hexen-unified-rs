@@ -1,0 +1,15 @@
+name: Dependency Update
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cargo-outdated
+        run: cargo install cargo-outdated
+      - name: Check outdated
+        run: cargo outdated -w
