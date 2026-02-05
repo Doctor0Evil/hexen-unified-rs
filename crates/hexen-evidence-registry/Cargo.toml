@@ -1,0 +1,10 @@
+[package]
+name = "hexen-evidence-registry"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
+
+bioscale-upgrade-store.workspace = true
