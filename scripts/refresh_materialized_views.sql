@@ -1,0 +1,1 @@
+REFRESH MATERIALIZED VIEW CONCURRENTLY audit_log_projection;
