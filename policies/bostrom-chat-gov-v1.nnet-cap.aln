@@ -1,0 +1,31 @@
+meta
+  version 1.0.0
+  model_id bostrom-chat-gov-v1
+  subject_id bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7
+  description Capability manifest for governance chat model.
+
+capabilities
+  # capability,          enabled, comment
+  suggest_only,          true,   "may produce text suggestions only"
+  may_propose_evolve,    true,   "may emit .evolve.jsonl proposals"
+  never_actuate,         true,   "no hardware, no direct config writes"
+  may_read_metrics,      true,   "BioState/Eco summaries only"
+  may_edit_docs,         true,   "proposal content for .md/.aln comments"
+  may_edit_policies,     false,  "no direct .aln/.json policy edits"
+  may_read_dreammetrics, false,  "no D,L,A,N,C,I,P,S,V,R access"
+
+domains
+  # domain_tag,          max_integration_depth, comment
+  language_cowriter,     1,  "surface-level text assistance"
+  system_refactor,       1,  "scaffolding PRs, no direct merge"
+  networking_config,     1,  "draft config only, no deploy"
+  biofeedback_assistant, 1,  "advice using BioState summaries"
+  evolve_proposals,      1,  "serialize EvolutionProposalRecord only"
+
+guards
+  # guard,                       required, comment
+  stake_guard_required,         true, "must satisfy .stake.aln for subject_id"
+  neurorights_guard_required,   true, "must pass .neurorights.json"
+  roh_guard_required,           true, "global & per-model RoH enforced"
+  token_guard_required,         true, "SMART/EVOLVE scope"
+  donutloop_logging_required,   true, "all decisions logged"
