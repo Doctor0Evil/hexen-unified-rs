@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hexen-xbox-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hexen-xbox-client
+  template:
+    metadata:
+      labels:
+        app: hexen-xbox-client
+    spec:
+      containers:
+        - name: xbox-client
+          image: ghcr.io/doctor0evil/hexen-xbox-client:0.1.0
+          args:
+            - "--backend"
+            - "http://hexen-neurostack"
