@@ -1,0 +1,9 @@
+meta
+  version   1.0.0
+  subject_id bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7
+  description Neural model binding spec for this repo.
+
+bindings
+  # bind_id,         module_id,              model_id,                 nnetx_path,                        nnetw_path,                         policy_path,                       cap_path,                          nnet_loop_path,                     roh_ceiling, integration_depth, scope,             readonly, suggest_only
+  chat-gov-v1-bind, neuropc-assistant-chat, bostrom-chat-gov-v1,      models/chat-gov-v1.nnetx,          weights/chat-gov-v1.nnetw,          policies/chat-gov-v1.nnet-policy.aln, policies/chat-gov-v1.nnet-cap.aln, logs/nnet/nnet-loop-v1.aln,        0.30,        advisory,          public_noncommercial, true,    true
+  rank-v1-bind,     organiccpu-qsearch,     bostrom-rank-qpolicy-v1,  models/rank-qpolicy-v1.nnetx,      weights/rank-qpolicy-v1.nnetq,      policies/rank-qpolicy-v1.nnet-policy.aln, policies/rank-qpolicy-v1.nnet-cap.aln, logs/nnet/nnet-loop-v1.aln,        0.25,        lowrisk,           internal_only,       true,    false
