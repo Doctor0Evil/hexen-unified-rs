@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: organiccpu-config
+  namespace: neuro-lab
+data:
+  OrganicCpuNeuroProfile2026v1.ocpu: |
+    # your .ocpu profile content here
+  OrganicCpuPainEnvelope2026v1.ocpuenv: |
+    # your .ocpuenv envelope here
